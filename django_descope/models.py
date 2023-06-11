@@ -20,7 +20,7 @@ class DescopeUser(auth_models.User):
 
     def sync(self, session, refresh):
         self.session = session
-        self.token = self.session["jwt"]
+        self.token = self.session.get("jwt")
         self.refresh = refresh
         self.firstSeen = self.session.get("firstSeen")
         self.username = self._me.get("userId")
